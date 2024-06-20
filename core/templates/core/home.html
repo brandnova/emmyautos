@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{{ site_config.site_name }} | Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ site_config.logo.url }" rel="icon">
+  <link href="{{ site_config.logo.url }" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.cs' %}s" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Baker
+  * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+<style>
+.logo img {
+  width: 100px; /* Adjust the value as needed */
+  height: 650px; /* This will maintain the aspect ratio of the image */
+}
+</style>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-transparent">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">{{ site_config.site_name }}</a></h1>
+      <a href="index.html" class="logo"><img src="{{ site_config.logo.url }}" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#gallery">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex align-items-center justify-content-center" style="background-image: url('{{ site_config.hero.url }}'); background-size: cover; background-position: center;">
+    <div class="container position-relative">
+      <h1>{{ site_config.hero_title }}</h1>
+      <h2>{{ site_config.hero_subtitle }}</h2>
+      <a href="{% url 'booking' %}" class="btn-get-started scrollto">Get Started</a>
+    </div>
+  </section><!-- End Hero -->
+
+  <main id="main">
+
+    <!-- ======= Brand Section ======= -->
+    <section id="clients" class="clients section-bg">
+      <div class="container">
+        <div class="row">
+          {% for brand in brands %}
+            <div class="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
+              {% if brand.logo %}
+                <img src="{{ brand.logo.url }}" class="img-fluid" alt="">
+              {% else %}
+                <p>No photo available for {{ brand.name }}</p>
+              {% endif %}
+            </div>
+          {% empty %}
+            <div class="col-12 text-center">
+              <p>No brands available.</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
+<!-- ======= About Section ======= -->
+
+<style>
+  .about .row .col-lg-6 img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+  }
+</style>
+
+<section id="about" class="about">
+  <div class="container py-5">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <img src="{{ site_config.about.url }}" class="img-fluid" alt="">
+      </div>
+      <div class="col-lg-6 pt-4 pt-lg-0">
+        <h3>About Us</h3>
+        <p>
+          {{ site_config.site_name }} is not just an auto repair shop; we're the pit crew your car deserves. With a passion for engines and a drive for perfection, we're here to revamp your ride and your expectations.
+        </p>
+        <div class="row">
+          <div class="col-md-6">
+            <i class="bx bx-receipt"></i>
+            <h4>Our mission</h4>
+            <p>To make car care cool again. Say goodbye to greasy garages and hello to a sleek</p>
+          </div>
+          <div class="col-md-6">
+            <i class="bx bx-cube-alt"></i>
+            <h4>Our Purpose</h4>
+            <p>Give you Modern experience that puts you in the driver's seat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section><!-- End About Section -->
+
+    <!-- ======= Counts Section ======= -->
+    <section id="counts" class="counts section-bg">
+      <div class="container">
+
+        <div class="row counters">
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="232" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Clients</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="521" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Projects</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="1463" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hours Of Support</p>
+          </div>
+
+          <div class="col-lg-3 col-6 text-center">
+            <span data-purecounter-start="0" data-purecounter-end="15" data-purecounter-duration="1" class="purecounter"></span>
+            <p>Hard Workers</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Counts Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Services</h2>
+          <p>From routine maintenance to complex repairs, our experts have you covered.</p>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+            <div class="icon-box iconbox-blue">
+              <div class="icon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAn9JREFUSEu11V3ozmcYB/DPn+ZlyzjwNjLlXUrkhJNRnFBGO+FApuUtJ07Iy5EcbApH2wGLJE4kJKK1A9pwOCnUyLwuM02xZV5n96XrqZ9fz/P35OWup36/+3ff1/e6vt/vdT0d3vPqeM/xtQvwOTZhbCZ0Eatw/HUJtgtwGwNrwa5gxLsAmIqTGaiR0It8j28/dQbSrIJ5+BIX8CFWZICrGJbP1zA0n7/FE4zBbuyvAtYB5uAQr2jzGN9jM27m5U9Tg6XoXgkYlUWMI429KkBvXEa/cukbDMcMzMaZFjQERQfxI37DOtxNbR7EnSrA3Mz+HCbUAobAOzA5909jcQarHo274xGue1lFFeAznEAX7ESU/1+652wTFwVdkcg9dE0av8LzYopppfpTdYB4X1YCbcuUgqIoew8W4HBSEJ+3Yia2YzlG4hJCg0gsqn25mrnoIXriAzzD7yW7QRhQHPVn3gs3RR/cSDeF0I+K8P8U8F6duSi+hWu65e9p4foWBhfahuRznAkXXc/32O+Bf9sBqFIUWYb3d2FRUrQmg32NWalViB0dHQ6MtaQVRVWR96YeQVfY9jz615wVlYXIf5Ue+Si1C61C5LBvOO0VDb7AgWKxX4rFJtWChQYNm4azwiFR7Z3aubg7MXvnaB2gTzqh2mhTsLpM0X0tGi3Gyhb8nJqszd4IB/7dzEXRbNGZdXf9gJX4NYFi7nxXAk+vAXc6Khpn5xf/L0TM/D/K5obkOLjum4fu4+PMcmPph08wup1h14yJcSlyteLGuB5VcU9TFtv9wwnPh/erqzq+W0jUvJObHY4RHH+ZwX2sGGrrcaxl5PzQbgWvi/PWFbwxwP+LF34Zc4betQAAAABJRU5ErkJggg=="/>
+              </div>
+              <h4><a href="">Engine Diagnostics</a></h4>
+              <p>Our state-of-the-art engine diagnostics service helps identify and address any issues with your vehicle's engine, ensuring optimal performance and efficiency.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in" data-aos-delay="200">
+            <div class="icon-box iconbox-orange ">
+              <div class="icon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXVJREFUSEvF1T9IVXEYxvGPg0OLk5oEDjqIjoHgItGgKTg5Co7qJkVFDu1hgygObYWj4OToP0Q0aGlrsKXGMJ1cghLsHjkHruf+zj2/g1w82+G8z/t9nvf357Rp8dPW4v6KABP4iCvMYb/ASGldWYLryISFfe4NMIlP+It57BUkeYYN/EtH2VBXliByQsVlzRZ5qba4o2gvoSTuj7EcShoC9OIbOirav8QgftXrQoA1PMc2ZvCnBPQAW5jCKl6WARIHPel4PkemeIKj1P2jZoARfMFZConsf3NgE2MPMYyvmTA/ovd4gxW8ju2e1q1jEe9q2/ZtCPAYu+is2DhffoFpnCQf6hN8x8Adm2fyUwzlAdm9k+yiZESv8CISGNLcmK9PkAG6cY4u/I4EhDSFgIXagdnELD5EAkKaBsAP9EU2LCv7if78iJKbcadMGfl9DAd5QPJe/4OpetMGtfkmh3ia/iLHI91mZUFtVZcVmbe3aWVxjOA/vDREGV9+9JgAAAAASUVORK5CYII="/>
+              </div>
+              <h4><a href="">Comprehensive Maintenance</a></h4>
+              <p>Our expert technicians provide comprehensive maintenance services to keep your vehicle running smoothly, from oil changes to brake inspections and more.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="300">
+            <div class="icon-box iconbox-pink">
+              <div class="icon">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAgtJREFUSEu11UuojVEUB/DfZcCIgUgUA6W8mXjlMSBKSVEGZISUQhFyS6EIYUBKKRMDZUJKKSVFESZCIRnIQF4peUQe36p19N1zz3evczpn1263v732/7/W+q+1vy4dHl0dxtcOguFYjAvp7AQsw/HYt4NgIa4g1i1Yh4l40S6CzThdSvUpbK3tm4kgbCP8OViELwXIPowsUnIPAxJ0JS79D8EQzE7AuZiFoXVFcQfzM9/bSmf7k7yXBoOwCRsxuUGFfUKAPsZajCoi2VlEcQZPMRprSoL3IgjltyfwbzxJwLu5BkhtRHRB9g2TirRMy9SE7QL8bCTyG4xIL67icz99chYbcB1LsnpWFyJ/xMl6gmF4j3dJ0hd2ODEPq9KZsA2HluNP+WK5iqbiYeZ3SsloIGak4CF2zLEV7BFFRPNvlAmWFiDXcBPH0sMAm4nBFYBHs1r2Yk9hdzjXhgS7cKSfnNcfRz/cSGduFf0RMwRuSPC26Mh4V77jPKJhQpe+RkR8omiyA5nCl8XdcVUEr7OOp6cWuzPkZoIKsh1VBJexInN+P3N5qA/0X3hQVNKjLNUwDU3CsYYp6sZBfM1KCnHL41UCRnPFDCd+pEHsa119sYpgTHoTb1CM59mZtxPwQzO5qtnWv6bj8SwPz2F9K6BVEdS+9+jEFgh6ON3of9Bxghacrr7SzB+tJeK/qMBfGSI/+gEAAAAASUVORK5CYII="/>
+              </div>
+              <h4><a href="">Body Repair</a></h4>
+              <p>Restore your vehicle's appearance and structural integrity with our state-of-the-art body repair services, including dent removal, painting, and collision repair.</p>
+            </div>
+          </div>
+
+
+        </div>
+
+      </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Cta Section ======= -->
+    <section id="cta" class="cta">
+      <div class="container">
+
+        <div class="text-center">
+          <h3>BOOK US NOW</h3>
+          <p> Get your wheels spinning with our top-notch service. Book now for a smooth ride ahead!.</p>
+          <a class="cta-btn" href="{% url 'booking' %}">Book Now</a>
+        </div>
+
+      </div>
+    </section><!-- End Cta Section -->
+<!-- ======= Testimonials Section ======= -->
+<section id="testimonials" class="testimonials">
+    <div class="container">
+      <div class="section-title">
+        <h2>Testimonials</h2>
+        <p>What Our Clients Says About Us.</p>
+      </div>
+  
+      <div class="testimonials-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          {% for review in reviews %}
+          <div class="swiper-slide">
+            <div class="testimonial-item">
+              <p>
+                <i class="bx bxs-quote-alt-left quote-icon-left"></i>
+                {{ review.bio }}.
+                <i class="bx bxs-quote-alt-right quote-icon-right"></i>
+              </p>
+              <img src="{{ review.photo.url }}" class="testimonial-img" alt="">
+              <h3>{{ review.name }}</h3>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section><!-- End Testimonials Section -->
+   <!-- Include Swiper JS -->
+   <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+   <script>
+     var swiper = new Swiper(".testimonials-slider", {
+       loop: true,
+       speed: 600,
+       autoplay: {
+         delay: 5000
+       },
+       slidesPerView: 3,
+       spaceBetween: 20,
+       pagination: {
+         el: ".swiper-pagination",
+         type: "bullets",
+         clickable: true
+       },
+       breakpoints: {
+         320: {
+           slidesPerView: 1,
+           spaceBetween: 10
+         },
+         768: {
+           slidesPerView: 2,
+           spaceBetween: 20
+         },
+         1200: {
+           slidesPerView: 3,
+           spaceBetween: 20
+         }
+       }
+     });
+   </script>
+
+<style>
+  .video {
+    padding: 60px 0;
+  }
+  
+  .video .video-container {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .video .responsive-video {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+  }
+  
+  .video .responsive-video video,
+  .video .responsive-video iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<!-- Video Section -->
+<section id="video" class="video">
+  <div class="container">
+      <div class="section-title">
+          <h2>Our Video</h2>
+          <p>Check Out Our Video Example.</p>
+      </div>
+      <div class="video-container" data-aos="fade-up" data-aos-delay="100">
+          {% if site_config.video_file %}
+          <div class="responsive-video">
+              <video controls>
+                  <source src="{{ site_config.video_file.url }}" type="video/mp4">
+                  Your browser does not support the video tag.
+              </video>
+          </div>
+          {% elif site_config.video_url %}
+          <div class="responsive-video">
+              <iframe src="{{ site_config.video_url }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          {% endif %}
+      </div>
+  </div>
+</section>
+<!-- End Video Section -->
+   <!-- ======= Testimonials Section ======= -->
+<!-- Gallery Carousel Section -->
+<section id="gallery" class="gallery">
+    <div class="container">
+        <div class="section-title">
+            <h2>Our Gallery</h2>
+            <p>Check Out Our Work Examples.</p>
+          </div>
+      <div class="gallery-slider swiper" data-aos="fade-up" data-aos-delay="100">
+        <div class="swiper-wrapper">
+          {% for gallery_image in gallery_images %}
+          <div class="swiper-slide">
+            <div class="gallery-item">
+              <img src="{{ gallery_image.photo.url }}" class="img-fluid" alt="">
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+  <!-- End Gallery Carousel Section -->
+  
+  <!-- Include Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+  
+  <script>
+    var swiper = new Swiper(".gallery-slider", {
+      loop: true,
+      speed: 600,
+      autoplay: {
+        delay: 5000
+      },
+      slidesPerView: 3,
+      spaceBetween: 20,
+      pagination: {
+        el: ".swiper-pagination",
+        type: "bullets",
+        clickable: true
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 1,
+          spaceBetween: 10
+        },
+        768: {
+          slidesPerView: 2,
+          spaceBetween: 20
+        },
+        1200: {
+          slidesPerView: 3,
+          spaceBetween: 20
+        }
+      }
+    });
+  </script>
+  
+  <style>
+    .gallery-item img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  </style>
+
+
+    <!-- ======= Team Section ======= -->
+    <section id="team" class="team section-bg">
+      <div class="container text-center">
+
+        <div class="section-title">
+          <h2>Team</h2>
+          <p>Our Experts</div>
+
+        <div class="row justify-content-center">
+            {% for team_member in team_members %}
+          <div class="col-lg-3 col-md-6 d-flex align-items-stretch">
+            <div class="member">
+              <div class="member-img">
+                <img src="{{ team_member.photo.url }}" class="img-fluid" alt="">
+                
+              </div>
+              <div class="member-info">
+                <h4>{{ team_member.name }}</h4>
+                <span>{{ team_member.bio }}</span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+
+      </div>
+    </section><!-- End Team Section -->
+
+    <!-- ======= Frequently Asked Questions Section ======= -->
+    <section id="faq" class="faq section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Frequently Asked Questions</h2>
+          <p>Fuel Your Curiosity</p>
+        </div>
+
+        <div class="faq-list">
+          <ul>
+            <li data-aos="fade-up">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" class="collapse" data-bs-target="#faq-list-1">What services do you offer? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-1" class="collapse show" data-bs-parent=".faq-list">
+                <p>
+                    We offer a wide range of services including oil changes, brake repairs, engine diagnostics, and more. If it's automotive, we can handle it!.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="100">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-2" class="collapsed">How can I book an appointment? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-2" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                    Booking with us is a breeze! Simply fill out our online form or give us a call. We'll rev up your schedule in no time.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="200">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-3" class="collapsed">Do you provide warranty on repairs? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-3" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                    Absolutely! We stand behind our work with a solid warranty. Drive with confidence knowing your vehicle is in expert hands.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="300">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-4" class="collapsed">Are your mechanics certified professionals? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-4" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                    Our mechanics are not just certified, they're automotive wizards! Trust in their expertise to give your vehicle the royal treatment.
+                </p>
+              </div>
+            </li>
+
+            <li data-aos="fade-up" data-aos-delay="400">
+              <i class="bx bx-help-circle icon-help"></i> <a data-bs-toggle="collapse" data-bs-target="#faq-list-5" class="collapsed">Can you handle custom modifications? <i class="bx bx-chevron-down icon-show"></i><i class="bx bx-chevron-up icon-close"></i></a>
+              <div id="faq-list-5" class="collapse" data-bs-parent=".faq-list">
+                <p>
+                Customization is our middle name! Whether you want to boost performance or enhance aesthetics, we'll make your automotive dreams a reality.</p>
+              </div>
+            </li>
+
+          </ul>
+        </div>
+
+      </div>
+    </section><!-- End Frequently Asked Questions Section -->
+
+    <!-- ======= Contact Section ======= -->
+<section id="contact" class="contact">
+    <div class="container">
+  
+      <div class="section-title">
+        <h2>Contact</h2>
+        <p>Get in Touch With Us</p>
+      </div>
+  
+      <div class="row">
+        <div class="col-lg-6">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="info-box">
+                <i class="bx bx-map"></i>
+                <h3>Our Address</h3>
+                <p>{{ site_config.address }}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-envelope"></i>
+                <h3>Email Us</h3>
+                <p>{{ site_config.email }}</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="info-box mt-4">
+                <i class="bx bx-phone-call"></i>
+                <h3>Call Us</h3>
+                <p>{{ site_config.phone }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="col-lg-6 mt-5 mt-lg-0">
+          <form action="/contact/" method="post">
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+              </div>
+              <div class="col-md-6 form-group mt-3 mt-md-0">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone Number" required>
+            </div>
+            <div class="form-group mt-3">
+              <textarea class="form-control" name="description" rows="8" placeholder="Enter Your Message" required></textarea>
+            </div>
+            <div class="my-3">
+            </div>
+            <button type="submit" class="btn btn-warning">Send Message</button>
+        </div>
+      </div>
+    </div>
+  </section><!-- End Contact Section -->
+
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer id="footer">
+
+    
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>{{ site_config.site_name }}</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="#">Pysmart</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        {% for link in social_links %}
+          {% if link.platform == 'twitter' %}
+            <a href="{{ link.url }}" class="twitter"><i class="bx bxl-twitter"></i></a>
+          {% elif link.platform == 'facebook' %}
+            <a href="{{ link.url }}" class="facebook"><i class="bx bxl-facebook"></i></a>
+          {% elif link.platform == 'instagram' %}
+            <a href="{{ link.url }}" class="instagram"><i class="bx bxl-instagram"></i></a>
+          {% elif link.platform == 'telegram' %}
+            <a href="{{ link.url }}" class="telegram"><i class="bx bxl-telegram"></i></a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  
+
+</body>
+
+</html>

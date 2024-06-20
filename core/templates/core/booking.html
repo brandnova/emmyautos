@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>{{ site_config.site_name }}|Home</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="{{ site_config.logo.url }" rel="icon">
+  <link href="{{ site_config.logo.url }" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="{% static 'assets/vendor/bootstrap/css/bootstrap.min.cs' %}s" rel="stylesheet">
+  <link href="{% static 'assets/vendor/bootstrap-icons/bootstrap-icons.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/boxicons/css/boxicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/glightbox/css/glightbox.min.css' %}" rel="stylesheet">
+  <link href="{% static 'assets/vendor/swiper/swiper-bundle.min.css' %}" rel="stylesheet">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+  <!-- Template Main CSS File -->
+  <link href="{% static 'assets/css/style.css' %}" rel="stylesheet">
+
+  <!-- =======================================================
+  * Template Name: Baker
+  * Template URL: https://bootstrapmade.com/baker-free-onepage-bootstrap-theme/
+  * Updated: Mar 17 2024 with Bootstrap v5.3.3
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+ 
+<style>
+.logo img {
+  width: 100px; /* Adjust the value as needed */
+  height: 650px; /* This will maintain the aspect ratio of the image */
+}
+</style>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top header-dark">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <h1 class="logo"><a href="index.html">{{ site_config.site_name }}</a></h1>
+      <a href="index.html" class="logo"><img src="{{ site_config.logo.url }}" alt="" class="img-fluid"></a>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="{% url 'home' %}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{% url 'home' %}#about">About</a></li>
+          <li><a class="nav-link scrollto" href="#services">Services</a></li>
+          <li><a class="nav-link scrollto " href="#gallery">Gallery</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
+    </div>
+  </header><!-- End Header -->
+<section data-bs-version="5.1" class="form5 cid-ucsvE8xBWw" id="contact-form-3-ucsvE8xBWw">
+    <div class="container py-5">
+        <!-- Existing code here -->
+        {% if messages %}
+                    <ul class="messages">
+                        {% for message in messages %}
+                            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+        <div class="row justify-content-center">
+            <div class="col-lg-8 mx-auto mbr-form" data-form-type="formoid">
+                <form action="/booking/" method="post">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-md-6 form-group">
+                            <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
+                        </div>
+                        <div class="col-md-6 form-group mt-3 mt-md-0">
+                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required>
+                        </div>
+                    </div>
+                    <div class="form-group mt-3">
+                        <input type="text" class="form-control" name="phone" id="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group mt-3">
+                        <textarea class="form-control" name="description" rows="8" placeholder="Enter Your Message" required></textarea>
+                    </div>
+                    <div class="my-3">
+                    </div>
+                    <div class="text-center"><button type="submit" class="btn btn-primary">Send Message</button></div>
+                </form>
+
+               
+                <!-- Add the messages code snippet here -->
+                
+
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    .messages {
+        padding: 10px;
+        background-color: #dff0d8;
+        color: #3c763d;
+        border-radius: 4px;
+        margin-top: 10px;
+    }
+    
+    .messages li {
+        margin-bottom: 5px;
+    }
+</style>
+      
+ 
+<footer id="footer">
+
+    
+    <div class="container d-md-flex py-4">
+
+      <div class="me-md-auto text-center text-md-start">
+        <div class="copyright">
+          &copy; Copyright <strong><span>{{ site_config.site_name }}</span></strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+          Designed by <a href="#">Pysmart</a>
+        </div>
+      </div>
+      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+        {% for link in social_links %}
+          {% if link.platform == 'twitter' %}
+            <a href="{{ link.url }}" class="twitter"><i class="bx bxl-twitter"></i></a>
+          {% elif link.platform == 'facebook' %}
+            <a href="{{ link.url }}" class="facebook"><i class="bx bxl-facebook"></i></a>
+          {% elif link.platform == 'instagram' %}
+            <a href="{{ link.url }}" class="instagram"><i class="bx bxl-instagram"></i></a>
+          {% elif link.platform == 'telegram' %}
+            <a href="{{ link.url }}" class="telegram"><i class="bx bxl-telegram"></i></a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </footer><!-- End Footer -->
+
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+  <!-- Vendor JS Files -->
+  <script src="{% static 'assets/vendor/purecounter/purecounter_vanilla.js' %}"></script>
+  <script src="{% static 'assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/glightbox/js/glightbox.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/isotope-layout/isotope.pkgd.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/swiper/swiper-bundle.min.js' %}"></script>
+  <script src="{% static 'assets/vendor/php-email-form/validate.js' %}"></script>
+
+  <!-- Template Main JS File -->
+  <script src="{% static 'assets/js/main.js' %}"></script>
+  
+
+  
+</body>
+</html>
